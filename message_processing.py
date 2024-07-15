@@ -1,4 +1,5 @@
 import logging
+from routing.menu_main import (main_menu_handlers, MainMenu)
 
 from meshtastic import BROADCAST_NUM
 
@@ -13,13 +14,6 @@ from command_handlers import (
 from db_operations import add_bulletin, add_mail, delete_bulletin, delete_mail, get_db_connection, add_channel
 from js8call_integration import handle_js8call_command, handle_js8call_steps, handle_group_message_selection
 from utils import get_user_state, get_node_short_name, get_node_id_from_num, send_message
-
-main_menu_handlers = {
-    "q": handle_quick_help_command,
-    "b": lambda sender_id, interface: handle_help_command(sender_id, interface, 'bbs'),
-    "u": lambda sender_id, interface: handle_help_command(sender_id, interface, 'utilities'),
-    "x": handle_help_command
-}
 
 bbs_menu_handlers = {
     "m": handle_mail_command,
